@@ -13,6 +13,14 @@ app.get('/feedbacks', function(req, res) {
     res.render('feedbacks')
 })
 
+app.get('/to-do-list', function(req, res) {
+    res.render('toDoList')
+})
+
+app.get('/succes-tasks', function(req, res) {
+    res.render('succesList')
+})
+
 const client = new Client({
     user: 'postgres',
     host: 'localhost',

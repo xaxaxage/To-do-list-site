@@ -1,10 +1,19 @@
+const alf = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","4","5","6","7","8","9"]
+
+function shifr(word) {
+    let add_PART = ""
+    const add_NUM = Math.floor(Math.random() * 9) // Рандомная генерация кол-ва символов в конце
+    for (let i = 0; i < add_NUM; i++) add_PART = add_PART + alf[Math.floor(Math.random() * alf.length)]// Генерация конечной части шифра
+    const last_shifr = String(add_NUM) + word + add_PART // Конечное создание шифра
+    return last_shifr  // Возврат шифра   
+}
+
 window.onload = () => {
     const tasksDiv = document.querySelector('.tasks')
     try {
         const storage = JSON.parse(localStorage.storage)
         const storageSuc = JSON.parse(localStorage.storageSuc)
         for (let i = 0; i < Object.keys(storage).length; i++) {
-            if (Object.keys(storageSuc).includes(Object.keys(storage)[i])) continue
 
             const newDiv = document.createElement('div')
             const newP = document.createElement('p')
@@ -37,8 +46,9 @@ window.onload = () => {
         }
     } catch(err) {console.log(err)}
 
-    if (!localStorage.getItem('storage')) localStorage.setItem('storage', 'false')
-    if (!localStorage.getItem('storageSuc')) localStorage.setItem('storageSuc', 'false')
+    if (!localStorage.getItem('storage')) localStorage.setItem('storage', JSON.stringify({}))
+    if (!localStorage.getItem('storageSuc')) localStorage.setItem('storageSuc', JSON.stringify({}))
+    if (!localStorage.getItem('shifr')) localStorage.setItem('shifr', JSON.stringify([]))
 
     const addButton = document.getElementById('addButton')
     const thingToDo = document.getElementById('input')
@@ -58,6 +68,10 @@ window.onload = () => {
         if (thingValue.length === 0) {
             alert('Type text!')
             return 
+        }
+        if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(thingValue[0])) {
+            alert('First letter can not be number!')
+            return
         }
         try { 
             if (thingValue in JSON.parse(localStorage.storage)) {
@@ -102,8 +116,6 @@ window.onload = () => {
         const month = (new Date().getMonth()) < 10 ? '0' + new Date().getMonth() : new Date().getMonth()   
         const dateDate = `${month}/${date}/${h}:${m}:${s}`
 
-        if (localStorage.storage === 'false') localStorage.storage = JSON.stringify({...{}})
-
         const obj = JSON.parse(localStorage.storage)
         Object.keys(obj).includes(thingValue) 
         console.log(Object.keys(obj), thingValue)
@@ -132,17 +144,19 @@ window.onload = () => {
             const month = (new Date().getMonth()) < 10 ? '0' + new Date().getMonth() : new Date().getMonth()   
             const dateDate = `${month}/${date}/${h}:${m}:${s}` 
 
+            let shifrStorage = JSON.parse(localStorage.shifr)
             const storage = JSON.parse(localStorage.storage)
+            const obj = JSON.parse(localStorage.storageSuc)
+                
+            if (succesButtons[i].parentNode.children[2].textContent in obj) {
+                const word = shifr(succesButtons[i].parentNode.children[2].textContent)
+                obj[word] = `${storage[Object.keys(storage)[i]]} - ${dateDate}`
+                shifrStorage = [...shifrStorage, word]
+            } else obj[succesButtons[i].parentNode.children[2].textContent] = `${storage[Object.keys(storage)[i]]} - ${dateDate}`
 
-            if (localStorage.storageSuc === 'false') {
-                const obj = {}
-                obj[succesButtons[i].parentNode.children[2].textContent] = `${storage[Object.keys(storage)[i]]} - ${dateDate}` 
-                localStorage.storageSuc = JSON.stringify({...obj})
-            } else {
-                const obj = JSON.parse(localStorage.storageSuc)
-                obj[succesButtons[i].parentNode.children[2].textContent] = `${storage[Object.keys(storage)[i]]} - ${dateDate}`
-                localStorage.storageSuc = JSON.stringify({...obj})
-            }
+            localStorage.storageSuc = JSON.stringify({...obj})
+            localStorage.shifr = JSON.stringify([...shifrStorage])
+
             succesButtons[i].parentNode.remove()
             delete storage[Object.keys(storage)[i]]
             localStorage.storage = JSON.stringify(storage)

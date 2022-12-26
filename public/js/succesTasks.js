@@ -1,8 +1,16 @@
+function unshifr(word) {
+    let wordToUnshifr = ''
+    for (let i = 1; i < word.length - Number(word[0]); i++) wordToUnshifr = wordToUnshifr + word[i]            
+    return wordToUnshifr
+}
+
 window.onload = () => {
     const succesdiv = document.querySelector('.succesdiv')     
     try {
         const storageSuc = JSON.parse(localStorage.storageSuc)
         const storage = JSON.parse(localStorage.storage)
+        const shifr = JSON.parse(localStorage.shifr)   
+
         for (let i = 0; i < Object.keys(storageSuc).length; i++) {
             const newDiv = document.createElement('div')
             const newP = document.createElement('p')
@@ -19,14 +27,14 @@ window.onload = () => {
                 newP.style.fontSize = '85px'
             }
 
-            newP.textContent = Object.keys(storageSuc)[i]
+            if (shifr.includes(Object.keys(storageSuc)[i])) newP.textContent = unshifr(Object.keys(storageSuc)[i])
+            else newP.textContent = Object.keys(storageSuc)[i]
             newP.classList.add('newP')
             newPTime.textContent = dates
             newPTime.classList.add('newPTime')
             newDiv.appendChild(newPTime)
             newDiv.appendChild(newP)
             succesdiv.appendChild(newDiv)
-            console.log(dates)
         }
     } catch(err) {console.log(err)}
 

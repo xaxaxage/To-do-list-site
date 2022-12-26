@@ -125,17 +125,6 @@ body {
     background: #027d05;
 }
 
-.panel {
-    background: #95ab05;
-    width: 170px;
-    position: fixed;
-    height: 240px;
-    top: 15px;
-    transition-duration: 0.8s;
-    left: -170px;
-    margin: 1px;
-}
-
 #sucTasks {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -164,6 +153,17 @@ body {
 
 #feedback:active {
     background: #033f73;
+}
+
+.panel {
+    background: #95ab05;
+    width: 170px;
+    position: fixed;
+    height: 240px;
+    top: 15px;
+    transition-duration: 0.8s;
+    left: -170px;
+    margin: 1px;
 }
 
 .panel > button {margin-left: 5px;}
