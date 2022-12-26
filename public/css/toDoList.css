@@ -1,0 +1,187 @@
+body {
+    background: #f2dd55;
+    width: 1300px;
+}
+
+.cap {
+    background: #d6cd24;
+    position: relative;
+    left: 15%;
+    height: 100%;
+    padding-bottom: 10px;
+    width: 85%;
+    margin-right: 1px;
+}
+
+.tasks > div {
+    height: 200px;
+    width: 61%;
+    left: 15%;
+    margin: 30px;
+    position: relative;
+    background: #ffe45c;
+    border-radius: 40px;
+}
+
+.tasks > div > p {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 140px;
+    margin: 10px;
+    position: relative;
+    top: -20px;
+}
+
+.deleteButton {
+    user-select: none;
+    background: #fc4747;
+    height: 45px;
+    width: 45px;
+    position: relative;
+    left: 82%;
+    top: 6px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+}
+
+.deleteButton:hover {
+    background: #fc6a6a;
+}
+
+.deleteButton:active {
+    background: #9c1919;
+}
+
+.succesButton {
+    user-select: none;
+    background: #56fc47;
+    height: 45px;
+    width: 45px;
+    position: relative;
+    left: 82%;
+    top: 10px;
+    border-radius: 20px;
+    font-size: 30px;
+    color: white;
+    border: none;
+    margin-right: 5px;
+}
+
+.succesButton:hover {
+    background: #8ffc6a;
+}
+
+.succesButton:active {
+    background: #1e8517;
+}
+
+#text {
+    font-size: 50px;
+    color: white;
+    position: relative;
+    left: 40%;
+    top: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.input {
+    background: #51edc3;
+    height: 130px;
+    width: 65%;
+    position: relative;
+    left: 18%;
+    border-radius: 100px;
+}
+
+#input {
+    height: 75px;
+    width: 500px;
+    border-radius: 30px;
+    position: relative;
+    left: 40px;
+    top: 10px;
+    font-size: 60px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#addButton {
+    height: 100px;
+    width: 100px;
+    background: #31de34;
+    border-radius: 30px;
+    position: relative;
+    left: 80px;
+    top: 15px;
+    font-size: 80px;
+    color: white;
+}
+
+#addButton:hover {
+    background: #4dfa5f;
+}
+
+#addButton:active {
+    background: #027d05;
+}
+
+.panel {
+    background: #95ab05;
+    width: 170px;
+    position: fixed;
+    height: 240px;
+    top: 15px;
+    transition-duration: 0.8s;
+    left: -170px;
+    margin: 1px;
+}
+
+#sucTasks {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 0.1px solid black;
+    background: #1aa34c;
+    color: white;
+}
+
+#sucTasks:hover {
+    background: #2ea65a;
+}
+
+#sucTasks:active {
+    background: #068a36;
+}
+
+#feedback {
+    background: #4139e3;
+    color: white;
+    border: 0.1px solid black;
+}
+
+#feedback:hover {
+    background: #106fc2;
+}
+
+#feedback:active {
+    background: #033f73;
+}
+
+.panel > button {margin-left: 5px;}
+
+.panel > button > a {
+    text-decoration: none;
+    color: white;
+}
+
+#options-btn {
+    background: #2eb832;
+    border: none;
+    position: relative;
+    top: -59px;
+    transition-duration: 0.8s;
+    left: 170px;
+    font-size: 45px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
