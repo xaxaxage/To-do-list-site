@@ -11,6 +11,7 @@ body {
     padding-bottom: 10px;
     width: 85%;
     margin-right: 1px;
+    pointer-events: none;
 }
 
 #text {
@@ -22,6 +23,8 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+.succesdiv {pointer-events: none;}
+
 .succesdiv > div {
     height: 200px;
     width: 61%;
@@ -30,12 +33,39 @@ body {
     position: relative;
     background: #ffe45c;
     border-radius: 40px;
+    pointer-events: none;
+}
+
+.deleteButton {
+    user-select: none;
+    background: #fc4747;
+    height: 45px;
+    width: 45px;
+    position: relative;
+    left: 90%;
+    top: 6px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.deleteButton:hover {
+    background: #fc6a6a;
+}
+
+.deleteButton:active {
+    background: #9c1919;
 }
 
 .newPTime {
     font-size: 42px;
     color: white;
-    margin-left: 55px;
+    margin-left: 10px;
+    margin-top: 0px;
+    position: relative;
+    top: -40px;
 }
 
 .newP {
@@ -44,7 +74,7 @@ body {
     font-size: 140px;
     margin: 10px;
     position: relative;
-    top: -40px;
+    top: -100px;
 }
 
 #sucTasks {

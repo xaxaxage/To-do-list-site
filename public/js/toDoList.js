@@ -160,6 +160,7 @@ window.onload = () => {
             succesButtons[i].parentNode.remove()
             delete storage[Object.keys(storage)[i]]
             localStorage.storage = JSON.stringify(storage)
+            window.location.reload()
         }
     }
 

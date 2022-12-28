@@ -59,3 +59,66 @@ body {
     position: relative;
     top: -15px;
 }
+
+#sucTasks {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 0.1px solid black;
+    background: #1aa34c;
+    color: white;
+}
+
+#sucTasks:hover {
+    background: #2ea65a;
+}
+
+#sucTasks:active {
+    background: #068a36;
+}
+
+#feedback {
+    background: #fc4747;
+    color: white;
+    border: 0.1px solid black;
+    position: relative;
+    top: -30px;
+}
+
+#feedback:hover {
+    background: #fc6a6a;
+}
+
+#feedback:active {
+    background: #9c1919;
+}
+
+.panel {
+    background: #95ab05;
+    width: 170px;
+    position: fixed;
+    height: 240px;
+    top: 15px;
+    transition-duration: 0.8s;
+    left: -170px;
+    margin: 1px;
+}
+
+.panel > button {margin-left: 5px;}
+
+.panel > button > a {
+    text-decoration: none;
+    color: white;
+}
+
+#options-btn {
+    background: #2eb832;
+    border: none;
+    position: relative;
+    top: -40px;
+    transition-duration: 0.8s;
+    left: 120px;
+    font-size: 45px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}

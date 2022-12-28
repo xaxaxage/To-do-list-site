@@ -4,6 +4,20 @@ function unshifr(word) {
     return wordToUnshifr
 }
 
+function checking(word, p) {
+    if (word.length > 8) {
+        p.style.fontSize = '120px'
+    }
+    if (word.length > 10) {
+        p.style.fontSize = '97px'
+        p.style.top = '-55px'
+    }
+    if (word.length > 12) {
+        p.style.fontSize = '85px'
+        p.style.top = '-40px'
+    }
+}
+
 window.onload = () => {
     const succesdiv = document.querySelector('.succesdiv')     
     try {
@@ -16,19 +30,20 @@ window.onload = () => {
             const newP = document.createElement('p')
             const dates = `${storageSuc[Object.keys(storageSuc)[i]]}`
             const newPTime = document.createElement('p')
+            const newDeleteButton = document.createElement('button')
 
-            if (Object.keys(storageSuc)[i].length > 8) {
-                newP.style.fontSize = '120px'
+            if (shifr.includes(Object.keys(storageSuc)[i])) {
+                checking(unshifr(Object.keys(storageSuc)[i]), newP)
+                newP.textContent = unshifr(Object.keys(storageSuc)[i])
             }
-            if (Object.keys(storageSuc)[i].length > 10) {
-                newP.style.fontSize = '97px'
-            }
-            if (Object.keys(storageSuc)[i].length > 12) {
-                newP.style.fontSize = '85px'
-            }
+            else {
+                checking(Object.keys(storageSuc)[i], newP)
+                newP.textContent = Object.keys(storageSuc)[i]
+            } 
 
-            if (shifr.includes(Object.keys(storageSuc)[i])) newP.textContent = unshifr(Object.keys(storageSuc)[i])
-            else newP.textContent = Object.keys(storageSuc)[i]
+            newDeleteButton.classList.add('deleteButton')
+            newDeleteButton.textContent = '🗑️'
+            newDiv.appendChild(newDeleteButton)
             newP.classList.add('newP')
             newPTime.textContent = dates
             newPTime.classList.add('newPTime')
@@ -49,6 +64,17 @@ window.onload = () => {
             panel.style.left = '0px'
             optionsBtn.textContent = '🠈'
             optionsBtn.style.background = '#f73123'
+        }
+    }
+
+    const deleteButtons = document.getElementsByClassName('deleteButton')
+
+    for (let i of deleteButtons) {
+        i.onclick = () => {
+            i.parentNode.remove()
+            const storage = JSON.parse(localStorage.storageSuc)
+            delete storage[i.parentNode.children[2].textContent]
+            localStorage.storageSuc = JSON.stringify(storage)
         }
     }
 }
