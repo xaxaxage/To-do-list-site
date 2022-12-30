@@ -32,6 +32,26 @@ body {
     border-radius: 40px;
 }
 
+.image {
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.stars {
+    position: relative;
+    top: -125px;
+    left: 440px;
+    font-size: 40px;
+    color: #fdf107;
+    text-shadow:-1px 0px 0px black,1px 0px 0px black,0px -1px 0px black,0px 1px 0px black;
+}
+/* 
+form {
+    position: relative;
+    top: -100px;
+} */
+
 #inp {
     background: #ffe45c;
     outline: none;
@@ -40,24 +60,51 @@ body {
     border: none;
     font-family: 'Roboto Condensed', sans-serif;
     position: relative;
-    top: -30px;
+    top: 10px;
+    text-shadow:-1px 0px 0px black,1px 0px 0px black,0px -1px 0px black,0px 1px 0px black;
 }
 
-.divinp {
+#inp::placeholder {text-shadow: none;}
+
+#submit {
+    left: 300px;
+    top: 27px;
+    position: relative;
+    background: #40d276;
+    color: white;
+    border: none;
+    width: 120px;
+    height: 35px;
+    border-radius: 8%;
+    cursor: pointer;
+}
+
+#submit:active {
+    background: #1aa34c
+}
+
+#rate {
+    color: white;
+    position: relative;
+    top: 30px;
+    font-size: 27px;
+    text-shadow: -1px 0px 0px black,1px 0px 0px black,0px -1px 0px black,0px 1px 0px black;
+}
+
+#rating {
+    position: relative;
+    top: 33px;
+    left: 50px;
+}
+
+#divinp {
     border: 3px gray solid;
     position: relative;
     margin-left: 15px;
-    top: 140px;
+    top: -120px;
     margin: 15px;
     width: 640px;
     height: 40px;
-}
-
-.letterQ {
-    color: #828281;
-    width: 1px;
-    position: relative;
-    top: -15px;
 }
 
 #sucTasks {

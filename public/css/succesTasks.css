@@ -11,7 +11,6 @@ body {
     padding-bottom: 10px;
     width: 85%;
     margin-right: 1px;
-    pointer-events: none;
 }
 
 #text {
@@ -23,8 +22,6 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-.succesdiv {pointer-events: none;}
-
 .succesdiv > div {
     height: 200px;
     width: 61%;
@@ -33,7 +30,6 @@ body {
     position: relative;
     background: #ffe45c;
     border-radius: 40px;
-    pointer-events: none;
 }
 
 .deleteButton {
