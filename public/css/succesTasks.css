@@ -16,10 +16,9 @@ body {
 #text {
     font-size: 50px;
     color: white;
-    position: relative;
-    left: 33%;
-    top: 10px;
+    margin: auto;
     font-family: 'Roboto Condensed', sans-serif;
+    width: 370px;
 }
 
 .succesdiv > div {
@@ -62,6 +61,7 @@ body {
     margin-top: 0px;
     position: relative;
     top: -40px;
+    pointer-events: none;
 }
 
 .newP {

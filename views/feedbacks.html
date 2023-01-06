@@ -15,13 +15,20 @@
             <div>
                 <img src="/public/Images/user.jpg" alt="user" width="80" height="80" class="image">
                 <p class="stars">☆☆☆☆☆</p>
-                <!-- ★ -->
-                <div id="divinp">
-                    <form action="" method="post">
-                        <input id="inp" type="text" name="feedback" placeholder="Enter your feedback">
-                        <label id="rate" for="Rating">Rate:</label>
-                        <input type="range" max="5" min="1" step="1" name="rating" id="rating">
-                        <input type="submit" id="submit">
+                <div class="container">
+                    <form action="/formPost" class="form" method="post">
+                        <div id="divinp"> 
+                            <textarea id="inp" type="text" name="feedback" placeholder="Enter your feedback"></textarea>
+                        </div>
+                        <div class="div">
+                            <div class="rating">
+                                <label id="rate" for="Rating">Rate:</label>
+                                <input type="range" max="5" min="1" step="1" name="rating" id="rating">
+                            </div>
+                            <div class="submitdiv">
+                                <input type="submit" id="submit">
+                            </div>
+                        </div>
                     </form>     
                 </div>    
             </div>

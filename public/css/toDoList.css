@@ -80,10 +80,9 @@ body {
 #text {
     font-size: 50px;
     color: white;
-    position: relative;
-    left: 40%;
-    top: 10px;
     font-family: 'Roboto Condensed', sans-serif;
+    width: 230px;
+    margin: auto;
 }
 
 .input {
