@@ -108,18 +108,14 @@ window.onload = () => {
         newP.classList.add('newP')
         newDiv.appendChild(newP)
         tasksDiv.appendChild(newDiv)
-
-        const date = (new Date().getDate()) < 10 ? '0' + new Date().getDate() : new Date().getDate() 
-        const s = (new Date().getSeconds()) < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
-        const m = (new Date().getMinutes()) < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
-        const h = (new Date().getHours()) < 10 ? '0' + new Date().getHours() : new Date().getHours()  
-        const month = (new Date().getMonth()) < 10 ? '0' + new Date().getMonth() : new Date().getMonth()   
-        const dateDate = `${month}/${date}/${h}:${m}:${s}`
+        
+        // YYYY/MM/dd/hh/mm/ss
+        const date = `${JSON.stringify(new Date()).substring(1, 11)}/${new Date().getHours() < 10 ? '0' + String(new Date().getHours()) : new Date().getHours()}:${new Date().getMinutes < 10 ? '0' + String(new Date().getMinutes()) : new Date().getMinutes()}:${new Date().getSeconds() < 10 ? '0' + String(new Date().getSeconds()) : new Date().getSeconds()}`
 
         const obj = JSON.parse(localStorage.storage)
         Object.keys(obj).includes(thingValue) 
         console.log(Object.keys(obj), thingValue)
-        obj[`${thingValue}`] = dateDate
+        obj[`${thingValue}`] = date
         
         localStorage.storage = JSON.stringify({...obj})
         console.log(obj, thingValue)
@@ -136,13 +132,10 @@ window.onload = () => {
     }
 
     for (let i = 0; i < succesButtons.length; i++) {
-        succesButtons[i].onclick = () => {    
-            const date = (new Date().getDate()) < 10 ? '0' + new Date().getDate() : new Date().getDate() 
-            const s = (new Date().getSeconds()) < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds()
-            const m = (new Date().getMinutes()) < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes()
-            const h = (new Date().getHours()) < 10 ? '0' + new Date().getHours() : new Date().getHours()  
-            const month = (new Date().getMonth()) < 10 ? '0' + new Date().getMonth() : new Date().getMonth()   
-            const dateDate = `${month}/${date}/${h}:${m}:${s}` 
+        succesButtons[i].onclick = () => {   
+
+            // YYYY/MM/dd/hh/mm/ss
+            const date = `${JSON.stringify(new Date()).substring(1, 11)}/${new Date().getHours() < 10 ? '0' + String(new Date().getHours()) : new Date().getHours()}:${new Date().getMinutes() < 10 ? '0' + String(new Date().getMinutes()) : new Date().getMinutes()}:${new Date().getSeconds() < 10 ? '0' + String(new Date().getSeconds()) : new Date().getSeconds()}`
 
             let shifrStorage = JSON.parse(localStorage.shifr)
             const storage = JSON.parse(localStorage.storage)
@@ -150,9 +143,9 @@ window.onload = () => {
                 
             if (succesButtons[i].parentNode.children[2].textContent in obj) {
                 const word = shifr(succesButtons[i].parentNode.children[2].textContent)
-                obj[word] = `${storage[Object.keys(storage)[i]]} - ${dateDate}`
+                obj[word] = `${storage[Object.keys(storage)[i]]} - ${date}`
                 shifrStorage = [...shifrStorage, word]
-            } else obj[succesButtons[i].parentNode.children[2].textContent] = `${storage[Object.keys(storage)[i]]} - ${dateDate}`
+            } else obj[succesButtons[i].parentNode.children[2].textContent] = `${storage[Object.keys(storage)[i]]} - ${date}`
 
             localStorage.storageSuc = JSON.stringify({...obj})
             localStorage.shifr = JSON.stringify([...shifrStorage])

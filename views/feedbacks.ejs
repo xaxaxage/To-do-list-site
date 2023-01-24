@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedbacks</title>
     <link rel="stylesheet" href="/public/css/feedbacks.css">
-    <script src="/public/js/feedbacks.js"></script>
+    <script type="module" src="/public/js/feedbacks.js"></script>
 </head>
 <body>
+    <p id="feedbacks" style="display: none;"><%= arr %></p>
     <div class="cap">
         <p id="text">Feedbacks</p>
         <div class="feedbacksdiv">
@@ -17,6 +18,8 @@
                 <p class="stars">☆☆☆☆☆</p>
                 <div class="container">
                     <form action="/formPost" class="form" method="post">
+                        <input id="user" name="username" style="display: none;"></input>
+                        <input type="text" style="display: none;" name="date" value="<%= JSON.stringify(new Date()).substring(1, 11) %>">
                         <div id="divinp"> 
                             <textarea id="inp" type="text" name="feedback" placeholder="Enter your feedback"></textarea>
                         </div>
@@ -29,9 +32,9 @@
                                 <input type="submit" id="submit">
                             </div>
                         </div>
-                    </form>     
+                    </form>
                 </div>    
-            </div>
+            </div>    
         </div>
     </div>
     <div class="panel">

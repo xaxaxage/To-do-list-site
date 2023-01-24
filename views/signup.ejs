@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign up</title>
+   <script src="/public/js/signup.js"></script>
+   <link rel="stylesheet" href="/public/css/signup.css">
+</head>
+<body>  
+   <p id="usedUsernames"><%= arr %></p>
+   <div class="container"> 
+      <p id="message">You have succesfully logged in</p>
+      <div class="formDiv">
+         <form action="/formPost" method="post" class="form">
+            <div class="inform">
+               <input type="text" name="username" id="username" placeholder="Username">
+               <p id="errorUser"></p>
+               <input type="password" name="password" id="password" placeholder="Password">
+               <input type="password" name="passwordcheck" id="passwordcheck" placeholder="Check password">
+               <p id="errorPassword"></p>
+               <input type="submit" id="submit">
+            </div>
+         </form>
+      </div>
+   </div> 
+   <div class="panel">
+      <button id="to-do-list"><a href="/to-do-list">Back</a></button><br>
+      <button id="sucTasks"><a href="/succes-tasks">Succesful tasks</a></button><br>
+      <button id="feedback"><a href="/feedbacks">Back</a></button>
+      <button id="options-btn">≡</button>
+  </div> 
+</body>
+</html>

@@ -1,9 +1,94 @@
 const cheking = {
     rating: false,
-    text: false
+    text: false,
+    signedUp: false
 }
 
 window.onload = () => {
+    if (localStorage.user) {
+        cheking.signedUp = true
+        document.getElementById('user').value = localStorage.user
+    } else {
+        const confirmValue = confirm('If you want to leave a feedbacks you must pass authorization')
+
+        if (confirmValue) location.href = '/sign-up'
+    }
+
+    const feedbacks = document.getElementById('feedbacks').textContent.split('}')
+    feedbacks.pop()
+
+    feedbacks.forEach(unparsed_elem => {
+        const parsed_elem = JSON.parse(unparsed_elem + '}')
+
+        const feedbacksdiv = document.getElementsByClassName('feedbacksdiv')[0]
+        const newDiv = document.createElement('div')
+        const flexDiv = document.createElement('div')
+        const feedbackDiv = document.createElement('div')
+        const usernameP = document.createElement('p')
+        const feedbackP = document.createElement('p')
+        const feedbackDate = document.createElement('p')
+        const ratingP = document.createElement('p')
+        const img = new Image()
+
+        // start adding delete button //-----------------------------------------------------------------
+        const deleteButton = document.createElement('input')
+        const deleteButtonForm = document.createElement('form')
+        const deleteButtonInputDate = document.createElement('input')
+        const deleteButtonInputUsername = document.createElement('input')
+
+        deleteButton.classList.add('deleteButton')
+
+        deleteButton.type = 'submit' 
+        deleteButtonForm.method = 'post'
+        deleteButtonForm.action = '/formPost'
+        deleteButton.value = '🗑️'
+        deleteButtonInputDate.type = 'text'
+        deleteButtonInputDate.value = parsed_elem.date
+        deleteButtonInputDate.style.display = 'none'
+        deleteButtonInputDate.name = 'date'
+        deleteButtonInputUsername.type = 'text'
+        deleteButtonInputUsername.value = parsed_elem.username
+        deleteButtonInputUsername.style.display = 'none'
+        deleteButtonInputUsername.name = 'username'
+
+        deleteButtonForm.appendChild(deleteButton)
+        deleteButtonForm.appendChild(deleteButtonInputDate)
+        deleteButtonForm.appendChild(deleteButtonInputUsername)
+        // end adding delete button //-------------------------------------------------------------------
+
+        feedbackDiv.classList.add('feedbackDiv')
+        flexDiv.classList.add('flexDiv')
+        ratingP.classList.add('ratingP')
+        usernameP.classList.add('usernameP')
+        feedbackP.classList.add('feedbackP')
+        feedbackDate.classList.add('feedback-date')
+        newDiv.classList.add('newDiv')
+        img.classList.add('image')
+
+        const todayDate = JSON.stringify(new Date()).substring(1, 11)
+
+        img.src = '/public/Images/user.jpg'  
+        usernameP.textContent = parsed_elem.username
+        feedbackP.textContent = parsed_elem.feedback
+        feedbackDate.textContent = todayDate
+        let text = ''
+        for (let i = 0; i < 5; i++) {      
+            if (i < parsed_elem.rating) text += '★' 
+            else text += '☆'  
+        }
+        ratingP.textContent = text
+
+        flexDiv.appendChild(img)
+        flexDiv.appendChild(usernameP)
+        flexDiv.appendChild(ratingP)
+        if (parsed_elem.username === localStorage.user) flexDiv.appendChild(deleteButtonForm)
+        feedbackDiv.appendChild(feedbackP)
+        newDiv.appendChild(flexDiv)
+        newDiv.appendChild(feedbackDiv)
+        newDiv.appendChild(feedbackDate)
+        feedbacksdiv.appendChild(newDiv)
+    })
+
     const optionsBtn = document.getElementById('options-btn')
     const panel = document.getElementsByClassName('panel')[0]
     const submitButton = document.getElementById('submit')
@@ -24,10 +109,15 @@ window.onload = () => {
         }
     }
 
+    if (localStorage.feedbacksAbility === 'false') {
+        alert('You have to wait 24 hours before leaving second feedback or you can delete your previous feedback')
+        localStorage.feedbacksAbility = true
+    }
+
     const rating = document.getElementById('rating')
     const stars = document.getElementsByClassName('stars')[0]
 
-    rating.value = 0
+    rating.value = 3
 
     rating.addEventListener('change', () => {
         let text = ''
@@ -59,11 +149,13 @@ window.onload = () => {
             cheking.text = true
         }
 
+        if (input.value.length < 15) cheking.text = false
+
         chekingf()
     })
 
     const chekingf = () => {
-        if (cheking.rating === true && cheking.text === true) {
+        if (cheking.rating === true && cheking.text === true && cheking.signedUp === true) {
             submitButton.disabled = false
             submitButton.style.cursor = 'pointer'
             submitButton.style.background = '#1aa34c'
@@ -76,7 +168,38 @@ window.onload = () => {
             submitButton.style.background = '#40d276'  
             submitButton.style.opacity = '0.5'  
         }
-    } 
+    }
+    
+    submitButton.addEventListener('click', (e) => {
+        try {
+            feedbacks.forEach(unparsed_elem => {
+                const parsed_elem = JSON.parse(unparsed_elem + '}')
 
+                if (parsed_elem.username === localStorage.user) {
+                    if (new Date(parsed_elem.date) > new Date() - 86400000) {
+                        localStorage.feedbacksAbility = "false"
+                        console.log('354')
+                        e.preventDefault()
+                    }
+                }
+            })   
+        } catch(err) {console.error(err)}
 
+        finally {
+            setTimeout(() => {
+                window.location.reload()
+            }, 200)     
+        }
+        
+        
+    })
+
+    const deleteButtons = document.getElementsByClassName('deleteButton')
+
+    for (let i of deleteButtons) {
+        i.onclick = () => {
+            localStorage.feedbacksAbility = "true"
+
+        }
+    }
 }

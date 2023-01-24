@@ -22,10 +22,16 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+.feedbacksdiv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .feedbacksdiv > div {
     height: 200px;
     width: 61%;
-    margin: auto;
+    margin: 30px;
     background: #ffe45c;
     border-radius: 40px;
 }
@@ -34,6 +40,8 @@ body {
     border-radius: 50%;
     margin-left: 10px;
     margin-top: 10px;
+    width: 80px;
+    height: 80px;
 }
 
 .stars {
@@ -64,26 +72,13 @@ body {
     letter-spacing: 1px;
 }
 
-/* #pinp {
-    margin: 0;
-    position: relative;
-    top: -20px;
-    left: 2.5px;
-    color: white;
-    font-family: 'Roboto Condensed', sans-serif;
-    text-shadow:-1px 0px 0px black,1px 0px 0px black,0px -1px 0px black,0px 1px 0px black;
-    pointer-events: none;
-    width: 635px;
-    height: 30px;
-} */
+#inp::placeholder {text-shadow: none;}
 
 .container {
     padding: 10px;
     position: relative;
     top: -85px;
 }
-
-#inp::placeholder {text-shadow: none;}
 
 .div {
     display: flex;
@@ -105,7 +100,6 @@ body {
     width: 120px;
     height: 35px;
     border-radius: 8%;
-    cursor:alias;
     opacity: 0.5;
 }
 
@@ -119,17 +113,78 @@ body {
     text-shadow: -1px 0px 0px black,1px 0px 0px black,0px -1px 0px black,0px 1px 0px black;
 }
 
-#rating {
-    top: 33px;
-    left: 50px;
-}
-
 #divinp {
     border: 3px gray solid;
     margin: auto;
     width: 640px;
     height: 40px;
     margin-bottom: 10px;
+}
+
+.ratingP {
+    font-size: 40px;
+    margin-top: 0px;
+    color: #fdf107;
+}
+
+.usernameP {
+    font-size: 40px;
+    margin-top: 0px;
+}
+
+.feedbackP {
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+}
+
+.feedback-date {
+    font-size: 23px;
+    color: lightgray;
+    text-align: end; 
+    width: 90%;
+    margin: 0;
+}
+
+.flexDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+.feedbackDiv {
+    border: 3px gray solid;
+    margin: auto;
+    width: 640px;
+    height: 40px;
+}
+
+.newDiv {
+    color: white;
+    text-shadow: -1px 0px 0px black,1px 0px 0px black,0px -1px 0px black,0px 1px 0px black;
+    margin-top: 30px;
+}
+
+.deleteButton {
+    user-select: none;
+    background: #fc4747;
+    height: 45px;
+    width: 45px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    margin-top: 10px;
+}
+
+.deleteButton:hover {
+    background: #fc6a6a;
+}
+
+.deleteButton:active {
+    background: #9c1919;
 }
 
 #sucTasks {
