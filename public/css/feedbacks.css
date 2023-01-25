@@ -22,18 +22,22 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-.feedbacksdiv {
+.feedbacksdiv, .main-div {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.feedbacksdiv > div {
+.newDiv, #make-feedback {
     height: 200px;
     width: 61%;
     margin: 30px;
     background: #ffe45c;
     border-radius: 40px;
+}
+
+.main-div {
+    width: 100%;
 }
 
 .image {
@@ -73,6 +77,18 @@ body {
 }
 
 #inp::placeholder {text-shadow: none;}
+
+#select-div {
+    text-align: center;   
+    margin: 30px;  
+}
+
+#select-sort {
+    background-color: #f2dd55;
+    font-size: 20px;
+    outline: none;
+    border-radius: 5px;
+}
 
 .container {
     padding: 10px;
@@ -136,6 +152,9 @@ body {
     margin: 0;
     font-family: 'Roboto Condensed', sans-serif;
     letter-spacing: 1px;
+    height: 100%;
+    word-break: break-all;
+    white-space: normal;
 }
 
 .feedback-date {

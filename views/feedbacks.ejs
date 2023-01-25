@@ -11,9 +11,20 @@
 <body>
     <p id="feedbacks" style="display: none;"><%= arr %></p>
     <div class="cap">
-        <p id="text">Feedbacks</p>
-        <div class="feedbacksdiv">
+        <div>
             <div>
+                <p id="text">Feedbacks</p>
+            </div>
+            <div id="select-div">
+                <select name="sort" id="select-sort">
+                    <option value="length">Sort by length</option>
+                    <option value="rating">Sort by rating</option>
+                    <option value="date">Sort by date</option>
+                </select>
+            </div>
+        </div>
+        <div class="feedbacksdiv">
+            <div id="make-feedback">
                 <img src="/public/Images/user.jpg" alt="user" width="80" height="80" class="image">
                 <p class="stars">☆☆☆☆☆</p>
                 <div class="container">
