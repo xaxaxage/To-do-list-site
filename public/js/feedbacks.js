@@ -152,7 +152,7 @@ window.onload = () => {
             newDiv.classList.add('newDiv')
             img.classList.add('image')
     
-            const todayDate = JSON.stringify(new Date()).substring(1, 11)
+            const todayDate = JSON.stringify(new Date(parsed_elem.date)).substring(1, 11)
     
             img.src = '/public/Images/user.jpg'  
             usernameP.textContent = parsed_elem.username
