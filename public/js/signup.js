@@ -8,11 +8,8 @@ const cheking = {
 window.onload = () => {
    if (localStorage.user) {
       document.getElementsByClassName('formDiv')[0].style.display = 'none'
-      document.querySelector('.container>p').style.display = 'block'
+      document.querySelector('#message-div').style.display = 'block'
    }
-
-   const optionsBtn = document.getElementById('options-btn')
-   const panel = document.getElementsByClassName('panel')[0]
 
    const submitButton = document.getElementById('submit')
    const username = document.getElementById('username')
@@ -24,18 +21,6 @@ window.onload = () => {
    submitButton.disabled = true
    submitButton.style.cursor = 'not-allowed'
    submitButton.style.background = '#40d276'
-
-   optionsBtn.onclick = () => {
-      if (optionsBtn.textContent === '🠈') {
-         panel.style.left = '-170px'
-         optionsBtn.textContent = '≡'
-         optionsBtn.style.background = '#2eb832'
-      } else {
-         panel.style.left = '0px'
-         optionsBtn.textContent = '🠈'
-         optionsBtn.style.background = '#f73123'
-      }
-   }
 
 
    passwordcheck.addEventListener('keyup', () => {

@@ -10,8 +10,11 @@
 </head>
 <body>  
    <p id="usedUsernames"><%= arr %></p>
-   <div class="container"> 
-      <p id="message">You have succesfully logged in</p>
+   <div class="container">
+      <div id="message-div">
+         <p id="message">You have succesfully logged in</p>
+         <button id="message-button"><a href="/feedbacks">Go back</a></button>
+      </div> 
       <div class="formDiv">
          <form action="/formPost" method="post" class="form">
             <div class="inform">
@@ -25,11 +28,5 @@
          </form>
       </div>
    </div> 
-   <div class="panel">
-      <button id="to-do-list"><a href="/to-do-list">Back</a></button><br>
-      <button id="sucTasks"><a href="/succes-tasks">Succesful tasks</a></button><br>
-      <button id="feedback"><a href="/feedbacks">Back</a></button>
-      <button id="options-btn">≡</button>
-  </div> 
 </body>
 </html>

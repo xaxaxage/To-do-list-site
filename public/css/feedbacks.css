@@ -29,11 +29,15 @@ body {
 }
 
 .newDiv, #make-feedback {
-    height: 200px;
+    min-height: 200px;
     width: 61%;
     margin: 30px;
     background: #ffe45c;
     border-radius: 40px;
+}
+
+#make-feedback {
+    height: 200px;
 }
 
 .main-div {
@@ -151,7 +155,7 @@ body {
 .feedbackP {
     margin: 0;
     font-family: 'Roboto Condensed', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     height: 100%;
     word-break: break-all;
     white-space: normal;
@@ -176,7 +180,8 @@ body {
     border: 3px gray solid;
     margin: auto;
     width: 640px;
-    height: 40px;
+    max-height: 70px;
+    padding: 2px;
 }
 
 .newDiv {
